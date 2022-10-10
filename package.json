@@ -15,7 +15,7 @@
     "build": "rollup -c",
     "bundlesize": "bundlesize",
     "lint": "eslint src --max-warnings=0",
-    "prepare": "husky"
+    "prepare": "husky install"
   },
   "author": "",
   "license": "ISC",
