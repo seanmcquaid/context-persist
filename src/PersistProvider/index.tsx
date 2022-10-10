@@ -3,15 +3,13 @@ import {
   ReactNode,
   useState,
   useEffect,
-  Dispatch,
-  SetStateAction,
   useMemo,
   useCallback,
 } from 'react';
 
 export const PersistValueContext = createContext<any | undefined>(undefined);
 export const PersistUpdateValueContext = createContext<
-  Dispatch<SetStateAction<any>> | undefined
+  ((value: any) => void) | undefined
 >(undefined);
 
 interface PersistProviderProps {
