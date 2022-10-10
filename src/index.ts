@@ -1,1 +1,2 @@
-export * from './useFunPackage';
+export * from './PersistProvider/index';
+export * from './usePersist/index';
