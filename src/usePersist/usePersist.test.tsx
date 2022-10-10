@@ -5,11 +5,9 @@ import { PersistProvider } from '../PersistProvider';
 
 describe('usePersist', () => {
   it('throws an Error if the hook is not used within the PersistProvider', () => {
-    try {
+    expect(() => {
       renderHook(() => usePersist());
-    } catch (e) {
-      expect(e).not.toBeNull();
-    }
+    }).toThrowError();
   });
   it('returns a value if the hook is used within the PersistProvider', () => {
     const { result } = renderHook(() => usePersist(), {

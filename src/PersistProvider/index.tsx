@@ -6,6 +6,7 @@ import {
   Dispatch,
   SetStateAction,
   useMemo,
+  useCallback,
 } from 'react';
 
 export const PersistValueContext = createContext<any | undefined>(undefined);
@@ -64,15 +65,21 @@ export const PersistProvider = ({
         value: defaultValue,
         version: persistVersion,
       };
-      localStorage.removeItem(key);
       localStorage.setItem(key, JSON.stringify(initialStoredInfo));
       setStoredInfo(initialStoredInfo);
     }
   }, [defaultValue, key, persistVersion, storedInfo.version]);
 
+  const updateValue = useCallback((value: any) => {
+    setStoredInfo(prev => ({
+      ...prev,
+      value,
+    }));
+  }, []);
+
   return (
     <PersistValueContext.Provider value={storedInfo.value}>
-      <PersistUpdateValueContext.Provider value={setStoredInfo}>
+      <PersistUpdateValueContext.Provider value={updateValue}>
         {children}
       </PersistUpdateValueContext.Provider>
     </PersistValueContext.Provider>
