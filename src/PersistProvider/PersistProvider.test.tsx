@@ -1,4 +1,4 @@
-import { describe, expect, it, beforeEach } from 'vitest';
+import { describe, expect, it, beforeEach, vi } from 'vitest';
 import { act, renderHook, waitFor } from '@testing-library/react';
 import { usePersist } from '../usePersist';
 import { PersistProvider } from './index';
@@ -7,7 +7,6 @@ describe('PersistProvider', () => {
   beforeEach(() => {
     localStorage.clear();
   });
-
   describe('storedInfo', () => {
     it('defaults to defaultValue if nothing is in localStorage', () => {
       const { result } = renderHook(() => usePersist(), {
@@ -80,5 +79,22 @@ describe('PersistProvider', () => {
       ),
     });
     await waitFor(() => expect(result.current.value).toEqual('value'));
+  });
+  it('logs console error if the default value is not serializable', async () => {
+    const warnSpy = vi
+      .spyOn(global.console, 'warn')
+      .mockImplementation(() => {});
+    renderHook(() => usePersist(), {
+      wrapper: ({ children }) => (
+        <PersistProvider
+          defaultValue={new Date()}
+          persistKey={'key'}
+          persistVersion={1}
+        >
+          {children}
+        </PersistProvider>
+      ),
+    });
+    await waitFor(() => expect(warnSpy).toHaveBeenCalled());
   });
 });
