@@ -27,30 +27,50 @@ export const PersistProvider = ({
   persistVersion,
 }: PersistProviderProps): JSX.Element => {
   const key = useMemo(() => `react-persist-${persistKey}`, [persistKey]);
-  const keyVersion = useMemo(() => `${key}-persistVersion`, [key]);
-  const [value, setValue] = useState(localStorage.getItem(key) ?? defaultValue);
-
-  useEffect(() => {
-    localStorage.setItem(key, value);
-  }, [value, key]);
-
-  useEffect(() => {
-    localStorage.setItem(keyVersion, persistVersion.toString());
-  }, [keyVersion, persistVersion]);
-
-  useEffect(() => {
-    if (
-      Number.parseInt(localStorage.getItem(keyVersion) ?? '0') !==
-      persistVersion
-    ) {
-      localStorage.setItem(keyVersion, persistVersion.toString());
-      localStorage.setItem(key, defaultValue);
+  const [storedInfo, setStoredInfo] = useState<{
+    value: any;
+    version: number;
+  }>(
+    JSON.parse(
+      localStorage.getItem(key) ??
+        JSON.stringify({ value: defaultValue, version: persistVersion })
+    ) as {
+      value: any;
+      version: number;
     }
-  }, [defaultValue, key, keyVersion, persistVersion]);
+  );
+
+  useEffect(() => {
+    if (defaultValue === Object(defaultValue)) {
+      console.error(
+        'You must use JSON serializable data in order for the data to persist'
+      );
+    }
+  }, [defaultValue]);
+
+  useEffect(() => {
+    const updatedStoredInfo = {
+      value: storedInfo.value,
+      version: persistVersion,
+    };
+    localStorage.setItem(key, JSON.stringify(updatedStoredInfo));
+    setStoredInfo(updatedStoredInfo);
+  }, [storedInfo.value, key, persistVersion]);
+
+  useEffect(() => {
+    if (storedInfo.version !== persistVersion) {
+      const initialStoredInfo = {
+        value: defaultValue,
+        version: persistVersion,
+      };
+      localStorage.setItem(key, JSON.stringify(initialStoredInfo));
+      setStoredInfo(initialStoredInfo);
+    }
+  }, [defaultValue, key, persistVersion, storedInfo.version]);
 
   return (
-    <PersistValueContext.Provider value={value}>
-      <PersistUpdateValueContext.Provider value={setValue}>
+    <PersistValueContext.Provider value={storedInfo.value}>
+      <PersistUpdateValueContext.Provider value={setStoredInfo}>
         {children}
       </PersistUpdateValueContext.Provider>
     </PersistValueContext.Provider>

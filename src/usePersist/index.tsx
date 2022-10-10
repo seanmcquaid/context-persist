@@ -1,10 +1,10 @@
-import { useContext } from 'react';
+import { Dispatch, useContext } from 'react';
 import {
   PersistUpdateValueContext,
   PersistValueContext,
 } from '../PersistProvider';
 
-export const usePersist = () => {
+export const usePersist = (): { value: any; updateValue: Dispatch<any> } => {
   const value = useContext(PersistValueContext);
   const updateValue = useContext(PersistUpdateValueContext);
   if (value === undefined || updateValue === undefined) {
