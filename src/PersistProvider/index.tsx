@@ -8,8 +8,8 @@ import {
   useMemo,
 } from 'react';
 
-const PersistValueContext = createContext<any | undefined>(undefined);
-const PersistUpdateValueContext = createContext<
+export const PersistValueContext = createContext<any | undefined>(undefined);
+export const PersistUpdateValueContext = createContext<
   Dispatch<SetStateAction<any>> | undefined
 >(undefined);
 
@@ -26,16 +26,12 @@ export const PersistProvider = ({
   persistKey,
   persistVersion,
 }: PersistProviderProps): JSX.Element => {
-  const storedInfo = JSON.parse(localStorage.getItem('react-persist') ?? '{}');
-  // object will have keys of persistKeys in it, within that persistKey will be an object with a value and a version
-  const [value, setValue] = useState(storedInfo[persistKey] ?? defaultValue);
+  const key = useMemo(() => `react-persist-${persistKey}`, [persistKey]);
+  const keyVersion = useMemo(() => `${key}-persistVersion`, [key]);
+  const [value, setValue] = useState(localStorage.getItem(key) ?? defaultValue);
 
   useEffect(() => {
-    const updatedStoredInfo = {
-      ...storedInfo,
-      [persistKey]: { ...value[persistKey] },
-    };
-    localStorage.setItem('react-persist', updatedStoredInfo);
+    localStorage.setItem(key, value);
   }, [value, key]);
 
   useEffect(() => {
