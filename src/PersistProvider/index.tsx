@@ -63,6 +63,7 @@ export const PersistProvider = ({
         value: defaultValue,
         version: persistVersion,
       };
+      localStorage.removeItem(key);
       localStorage.setItem(key, JSON.stringify(initialStoredInfo));
       setStoredInfo(initialStoredInfo);
     }
