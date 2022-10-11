@@ -33,10 +33,7 @@ export const PersistProvider = ({
     JSON.parse(
       localStorage.getItem(key) ??
         JSON.stringify({ value: defaultValue, version: persistVersion })
-    ) as {
-      value: any;
-      version: number;
-    }
+    )
   );
 
   useEffect(() => {
