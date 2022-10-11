@@ -81,9 +81,9 @@ describe('PersistProvider', () => {
     await waitFor(() => expect(result.current.value).toEqual('value'));
   });
   it('logs console error if the default value is not serializable', async () => {
-    const warnSpy = vi
-      .spyOn(global.console, 'warn')
-      .mockImplementation(() => {});
+    const mockConsoleError = vi.fn();
+    const mockConsole = { error: mockConsoleError };
+    vi.stubGlobal('console', mockConsole);
     renderHook(() => usePersist(), {
       wrapper: ({ children }) => (
         <PersistProvider
@@ -95,6 +95,6 @@ describe('PersistProvider', () => {
         </PersistProvider>
       ),
     });
-    await waitFor(() => expect(warnSpy).toHaveBeenCalled());
+    await waitFor(() => expect(mockConsoleError).toHaveBeenCalled());
   });
 });
