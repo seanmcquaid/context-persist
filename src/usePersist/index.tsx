@@ -4,14 +4,13 @@ import {
   PersistValueContext,
 } from '../PersistProvider';
 
-export const usePersist = (): {
-  value: any;
-  updateValue: (value: any) => void;
-} => {
-  const value = useContext(PersistValueContext);
-  const updateValue = useContext(PersistUpdateValueContext);
+export function usePersist<T = any>() {
+  const value = useContext<T>(PersistValueContext);
+  const updateValue: ((value: T) => void) | undefined = useContext(
+    PersistUpdateValueContext
+  );
   if (value === undefined || updateValue === undefined) {
     throw new Error('usePersist must be used in a PersistProvider');
   }
   return { value, updateValue };
-};
+}
