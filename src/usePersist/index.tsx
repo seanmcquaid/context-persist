@@ -4,7 +4,10 @@ import {
   PersistValueContext,
 } from '../PersistProvider';
 
-export function usePersist<T = any>() {
+export function usePersist<T = any>(): {
+  value: T;
+  updateValue: (value: T) => void;
+} {
   const value = useContext<T>(PersistValueContext);
   const updateValue: ((value: T) => void) | undefined = useContext(
     PersistUpdateValueContext
