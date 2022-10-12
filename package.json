@@ -39,7 +39,6 @@
     "eslint-plugin-react": "^7.31.9",
     "happy-dom": "^7.4.0",
     "husky": "^8.0.1",
-    "jsdom": "^20.0.1",
     "prettier": "^2.6.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
