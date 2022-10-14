@@ -1,4 +1,4 @@
-# React Persist
+# Context Persist
 
 A lightweight solution to storing values stored in React Context into Local Storage. 
 
