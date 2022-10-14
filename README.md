@@ -1,6 +1,6 @@
 # Context Persist
 
-A lightweight solution to storing values stored in React Context into Local Storage. 
+A lightweight solution for storing state values in Local Storage. 
 
 If you prefer to utilize Context for Global State Management but want similar functionality to Redux Persist, this library might be a good fit for your use case. 
 
@@ -57,7 +57,7 @@ const ChildComponent: FC = () => {
 
 ### PersistProvider
 
-The Provider for persisting a value in local storage. If you want to guarantee a clear on local storage for all users, you just need to update the version number for the specific Provider.
+The Provider for persisting a value in local storage. If you want to guarantee a clear on values in local storage for all users, you just need to update the version number for the specific Provider.
 
 ```tsx
 interface PersistProviderProps {
