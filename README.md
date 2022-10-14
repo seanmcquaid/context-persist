@@ -1,6 +1,6 @@
 # React Persist
 
-React Persist is a lightweight solution to storing values stored in Context into Local Storage. 
+A lightweight solution to storing values stored in React Context into Local Storage. 
 
 If you prefer to utilize Context for Global State Management but want similar functionality to Redux Persist, this library might be a good fit for your use case.
 
@@ -20,7 +20,36 @@ $ yarn add react-persist
 
 ## Basic Usage
 
+```tsx
+import { PersistProvider } from 'react-persist';
 
+const ParentComponent: FC = () => {
+  return (
+    <PersistProvider
+      defaultValue="default here"
+      persistKey="cool-key-here"
+      persistVersion={1}
+    >
+      <ChildComponent />
+    </PersistProvider>
+  );
+};
+```
+
+```tsx
+const ChildComponent: FC = () => {
+  const { value, updateValue } = usePersist<string>();
+
+  return (
+    <div>
+      <h1>{value}</h1>
+      <button onClick={() => updateValue('New value for local storage')}>
+        Update Value!
+      </button>
+    </div>
+  );
+};
+```
 
 ## API
 
