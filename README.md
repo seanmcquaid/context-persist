@@ -1,15 +1,13 @@
-# TypeScript Library Template
+# Welcome to React Persist!
 
-This is a base template for any new TypeScript + React libraries I build. It is using Rollup as a build tool with some appropriate plugins that are common for libraries built with Rollup.
+React Persist is a lightweight solution to storing values stored in Context into Local Storage. 
 
-## Publishing a package locally
+If you prefer to utilize Context for Global State Management but want similar functionality to Redux Persist, this library might be a good fit for your use case.
 
-1. Upgrade the version number of the package
-2. Commit the version bump
-3. Run `yarn build`
-4. Run `npm publish`
-5. Your package will now be publicly available on NPM!
+## Documentation
 
-## Publishing a package from GHA to NPM
+## Contributing
 
-You can run the Publish to NPM GHA via Workflow Dispatch in the Actions tab. Be sure to generate a token from NPM and add this a repo secret!
+## Found a bug or want an enhancement?
+
+Please file an issue on this repo and I will do my best to prioritize the requests appropriately!
