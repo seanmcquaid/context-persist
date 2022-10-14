@@ -2,7 +2,9 @@
 
 A lightweight solution to storing values stored in React Context into Local Storage. 
 
-If you prefer to utilize Context for Global State Management but want similar functionality to Redux Persist, this library might be a good fit for your use case.
+If you prefer to utilize Context for Global State Management but want similar functionality to Redux Persist, this library might be a good fit for your use case. 
+
+We do not currently support storing non-serializable data (like Dates) into Local Storage. We might look at adding a transform function option later on if this is requested enough.
 
 ## Installing
 
@@ -78,8 +80,6 @@ function usePersist<T = any>(): {
   updateValue: (value: T) => void;
 };
 ```
-
-## Contributing
 
 ## Found a bug or want an enhancement?
 
