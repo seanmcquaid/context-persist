@@ -1,7 +1,7 @@
 {
   "name": "context-persist",
   "version": "0.0.1",
-  "description": "Persistence in Local Storage for React Context",
+  "description": "A lightweight solution for storing state values in Local Storage",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "unpkg": "dist/umd/index.js",
