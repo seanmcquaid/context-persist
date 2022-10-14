@@ -1,2 +1,2 @@
-export * from './PersistProvider/index';
-export * from './usePersist/index';
+export { PersistProvider } from './PersistProvider/index';
+export { usePersist } from './usePersist/index';

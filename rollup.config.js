@@ -22,6 +22,12 @@ export default [
         sourcemap: true,
         name: packageJson.name,
       },
+      {
+        file: packageJson.unpkg,
+        format: 'umd',
+        sourcemap: true,
+        name: packageJson.name,
+      },
     ],
     plugins: [
       external(),
