@@ -1,6 +1,6 @@
 # Context Persist
 
-A lightweight solution for storing state values in Local Storage. 
+A lightweight solution for storing values in Context in Local Storage. 
 
 If you prefer to utilize Context for Global State Management but want similar functionality to Redux Persist, this library might be a good fit for your use case. 
 
