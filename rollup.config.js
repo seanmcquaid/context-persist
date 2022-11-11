@@ -11,22 +11,19 @@ export default [
     input: 'src/index.ts',
     output: [
       {
-        file: packageJson.main,
+        dir: packageJson.main,
         format: 'cjs',
         sourcemap: true,
         name: packageJson.name,
+        preserveModules: true,
+        exports: 'named',
       },
       {
-        file: packageJson.module,
+        dir: packageJson.module,
         format: 'esm',
         sourcemap: true,
         name: packageJson.name,
-      },
-      {
-        file: packageJson.unpkg,
-        format: 'umd',
-        sourcemap: true,
-        name: packageJson.name,
+        preserveModules: true,
       },
     ],
     plugins: [
@@ -38,9 +35,8 @@ export default [
     ],
   },
   {
-    input: 'dist/esm/index.d.ts',
-    output: [{ file: 'dist/index.d.ts', format: 'esm' }],
-    external: [/\.css$/],
+    input: 'src/index.ts',
+    output: [{ file: 'dist/index.d.ts' }],
     plugins: [dts()],
   },
 ];
