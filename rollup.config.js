@@ -19,12 +19,6 @@ export default [
         exports: 'named',
       },
       {
-        file: packageJson.unpkg,
-        format: 'umd',
-        sourcemap: true,
-        name: packageJson.name,
-      },
-      {
         dir: 'dist/esm',
         format: 'esm',
         sourcemap: true,
@@ -33,8 +27,8 @@ export default [
       },
     ],
     plugins: [
-      external(),
       resolve(),
+      external(),
       commonjs(),
       typescript({ tsconfig: './tsconfig.json' }),
       terser(),
