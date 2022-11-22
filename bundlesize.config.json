@@ -7,6 +7,6 @@
     {
       "path": "dist/esm/index.js",
       "maxSize": "3 kB"
-    },
+    }
   ]
 }
