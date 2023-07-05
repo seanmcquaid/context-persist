@@ -1791,10 +1791,10 @@ gzip-size@^5.1.1:
     duplexer "^0.1.1"
     pify "^4.0.1"
 
-happy-dom@^9.0.0:
-  version "9.20.3"
-  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-9.20.3.tgz#4b097e889b33ef553d1c62b25a797ff05f7528e3"
-  integrity sha512-eBsgauT435fXFvQDNcmm5QbGtYzxEzOaX35Ia+h6yP/wwa4xSWZh1CfP+mGby8Hk6Xu59mTkpyf72rUXHNxY7A==
+happy-dom@^10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-10.0.0.tgz#acb3569e52fa3dd825ab44299dd4e8aba94ebf92"
+  integrity sha512-qisxGYWhTe+Vx+8IcxOo0MgDLk3BIY0VRFC9LBLPyWYRIQWlkCAOhOEiMBqa7yVL3zh7lNxNKn+DKuIojpYHXg==
   dependencies:
     css.escape "^1.5.1"
     entities "^4.5.0"
