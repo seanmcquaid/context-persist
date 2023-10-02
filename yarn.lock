@@ -1893,9 +1893,9 @@ gzip-size@^5.1.1:
     pify "^4.0.1"
 
 happy-dom@^12.0.0:
-  version "12.1.2"
-  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-12.1.2.tgz#975f76f69c2661917bb6c4da18ca9b44a705eea2"
-  integrity sha512-Ee0MdMXAMzfmZ4gLe33iKt8Rza5Fkyr+DxtHzCiBihTkI8JoX2XOfPdSsKDr0JAoMNYdMrFqIDYBoHq5DJqDXg==
+  version "12.5.0"
+  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-12.5.0.tgz#c026594ccf30f6f11c9d29ea049cd97311f48174"
+  integrity sha512-bEieZxuWNc6RrTQmOkaYSxqni2TkTItsId4SimAzW/Wo2cxuPP3qL6gWV/LsBH2s4DV5HZRLwciEtmhgwJJWNw==
   dependencies:
     css.escape "^1.5.1"
     entities "^4.5.0"
